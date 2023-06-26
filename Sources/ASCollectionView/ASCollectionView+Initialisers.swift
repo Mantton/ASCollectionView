@@ -28,8 +28,9 @@ public extension ASCollectionView
 	 */
 	init(editMode: Bool = false, @SectionArrayBuilder <SectionID> sectionBuilder: () -> [Section])
 	{
-		sections = sectionBuilder()
-	}
+        self.editMode = editMode
+        self.sections = sectionBuilder()
+    }
 }
 
 // MARK: Init for single-section CV

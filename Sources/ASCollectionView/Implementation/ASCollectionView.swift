@@ -188,16 +188,27 @@ public struct ASCollectionView<SectionID: Hashable>: UIViewControllerRepresentab
 
 		func updateCollectionViewSettings(_ collectionView: UICollectionView)
 		{
-			assignIfChanged(collectionView, \.backgroundColor, newValue: parent.backgroundColor)
-			assignIfChanged(collectionView, \.dragInteractionEnabled, newValue: true)
-			assignIfChanged(collectionView, \.alwaysBounceVertical, newValue: parent.alwaysBounceVertical)
-			assignIfChanged(collectionView, \.alwaysBounceHorizontal, newValue: parent.alwaysBounceHorizontal)
-			assignIfChanged(collectionView, \.allowsSelection, newValue: true)
-			assignIfChanged(collectionView, \.allowsMultipleSelection, newValue: true)
-			assignIfChanged(collectionView, \.showsVerticalScrollIndicator, newValue: parent.verticalScrollIndicatorEnabled)
-			assignIfChanged(collectionView, \.showsHorizontalScrollIndicator, newValue: parent.horizontalScrollIndicatorEnabled)
-			assignIfChanged(collectionView, \.keyboardDismissMode, newValue: .interactive)
-			updateCollectionViewContentInsets(collectionView)
+            assignIfChanged(collectionView, \.backgroundColor, newValue: parent.backgroundColor)
+            assignIfChanged(collectionView, \.dragInteractionEnabled, newValue: true)
+            assignIfChanged(collectionView, \.alwaysBounceVertical, newValue: parent.alwaysBounceVertical)
+            assignIfChanged(collectionView, \.alwaysBounceHorizontal, newValue: parent.alwaysBounceHorizontal)
+            assignIfChanged(collectionView, \.allowsSelection, newValue: true)
+            assignIfChanged(collectionView, \.allowsMultipleSelection, newValue: true)
+            assignIfChanged(collectionView, \.showsVerticalScrollIndicator, newValue: parent.verticalScrollIndicatorEnabled)
+            assignIfChanged(collectionView, \.showsHorizontalScrollIndicator, newValue: parent.horizontalScrollIndicatorEnabled)
+            assignIfChanged(collectionView, \.keyboardDismissMode, newValue: .interactive)
+            
+            
+            assignIfChanged(collectionView, \.allowsSelection, newValue: true)
+            assignIfChanged(collectionView, \.allowsMultipleSelection, newValue: true)
+            
+            if #available(iOS 14.0, *) {
+                assignIfChanged(collectionView, \.allowsSelectionDuringEditing, newValue: true)
+                assignIfChanged(collectionView, \.allowsMultipleSelectionDuringEditing, newValue: true)
+                assignIfChanged(collectionView, \.isEditing, newValue: parent.editMode)
+            }
+            
+            updateCollectionViewContentInsets(collectionView)
 		}
 
 		func updateCollectionViewContentInsets(_ collectionView: UICollectionView)
